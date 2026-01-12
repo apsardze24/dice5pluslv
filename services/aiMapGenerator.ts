@@ -1,0 +1,63 @@
+// The live AI map generation feature has been removed.
+// This file now holds pre-generated, fully-connected map shapes for the editor.
+
+interface PreGeneratedShape {
+    name: string;
+    coords: { q: number; r: number }[];
+}
+
+export const PRE_GENERATED_SHAPES: PreGeneratedShape[] = [
+    {
+        name: 'USA',
+        coords: [
+            // West Coast
+            { q: -12, r: -4 }, { q: -11, r: -4 },
+            { q: -12, r: -3 }, { q: -11, r: -3 },
+            { q: -12, r: -2 }, { q: -11, r: -2 },
+            { q: -11, r: -1 }, { q: -10, r: -1 },
+            { q: -10, r: 0 },
+            // Rockies & Southwest
+            { q: -10, r: -3 }, { q: -9, r: -3 }, { q: -8, r: -4 },
+            { q: -10, r: -2 }, { q: -9, r: -2 }, { q: -8, r: -3 },
+            { q: -9, r: -1 }, { q: -8, r: -2 }, { q: -7, r: -2 },
+            { q: -9, r: 0 }, { q: -8, r: 0 }, { q: -7, r: 0 },
+            { q: -8, r: 1 }, { q: -7, r: 1 },
+            // Midwest
+            { q: -6, r: -3 }, { q: -5, r: -3 }, { q: -4, r: -3 }, { q: -3, r: -3 },
+            { q: -7, r: -1 }, { q: -6, r: -2 }, { q: -5, r: -2 }, { q: -4, r: -2 }, { q: -3, r: -2 },
+            { q: -6, r: -1 }, { q: -5, r: -1 }, { q: -4, r: -1 }, { q: -3, r: -1 },
+            { q: -6, r: 0 }, { q: -5, r: 0 }, { q: -4, r: 0 }, { q: -3, r: 0 },
+            { q: -6, r: 1 }, { q: -5, r: 1 }, { q: -4, r: 1 }, { q: -3, r: 1 },
+            { q: -5, r: 2 }, { q: -4, r: 2 }, { q: -3, r: 2 },
+            // Texas
+            { q: -6, r: 2 }, { q: -5, r: 3 }, { q: -4, r: 3 },
+            { q: -6, r: 3 }, { q: -5, r: 4 },
+            // East Coast
+            { q: -2, r: -2 }, { q: -1, r: -2 }, { q: 0, r: -2 }, { q: 1, r: -2 }, { q: 2, r: -2 },
+            { q: -2, r: -1 }, { q: -1, r: -1 }, { q: 0, r: -1 }, { q: 1, r: -1 }, { q: 2, r: -1 },
+            { q: -2, r: 0 }, { q: -1, r: 0 }, { q: 0, r: 0 }, { q: 1, r: 0 },
+            { q: -2, r: 1 }, { q: -1, r: 1 }, { q: 0, r: 1 }, { q: 1, r: 1 },
+            { q: -2, r: 2 }, { q: -1, r: 2 },
+            // Florida
+            { q: 0, r: 2 }, { q: 0, r: 3 }, { q: 1, r: 3 },
+            // New England
+            { q: 2, r: -3 }, { q: 3, r: -4 }, { q: 3, r: -3 },
+        ],
+    },
+    {
+        name: 'Crescent Moon',
+        coords: [
+            { q: 0, r: -5 }, { q: 1, r: -5 },
+            { q: -1, r: -4 }, { q: 0, r: -4 }, { q: 1, r: -4 }, { q: 2, r: -4 },
+            { q: -2, r: -3 }, { q: -1, r: -3 }, { q: 2, r: -3 }, { q: 3, r: -3 },
+            { q: -2, r: -2 }, { q: 3, r: -2 },
+            { q: -3, r: -1 }, { q: 4, r: -1 },
+            { q: -3, r: 0 }, { q: 4, r: 0 },
+            { q: -3, r: 1 }, { q: 4, r: 1 },
+            { q: -2, r: 2 }, { q: 3, r: 2 },
+            { q: -2, r: 3 }, { q: -1, r: 3 }, { q: 2, r: 3 }, { q: 3, r: 3 },
+            { q: -1, r: 4 }, { q: 0, r: 4 }, { q: 1, r: 4 }, { q: 2, r: 4 },
+            { q: 0, r: 5 }, { q: 1, r: 5 },
+        ],
+    },
+];

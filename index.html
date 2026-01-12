@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>Dice Wars React</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+      :root {
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+        --applied-safe-area-bottom: var(--safe-area-inset-bottom);
+      }
+      html {
+        height: 100%;
+        overflow: hidden; /* Prevent elastic scrolling on body */
+      }
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(80% 100% at 50% 0%, #0f1636, #070a17);
+        overflow: hidden;
+        overscroll-behavior: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #root {
+        height: 100%;
+        width: 100%;
+      }
+      @keyframes blink {
+        50% { opacity: 0.3; }
+      }
+      .blinking {
+        animation: blink 1s step-end infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+</head>
+  <body class="text-gray-200">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

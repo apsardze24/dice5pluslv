@@ -1,0 +1,5 @@
+{
+  "name": "Dice Wars 2.17",
+  "description": "A React-based hexagonal strategy board game where players conquer territories by rolling dice. Features AI opponents, customizable maps, and strategic gameplay.",
+  "requestFramePermissions": []
+}
