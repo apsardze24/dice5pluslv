@@ -19,7 +19,6 @@ const App: React.FC = () => {
     const [currentLang, setCurrentLang] = useState<LangCode>('ru');
 
     useEffect(() => {
-        // Safe check for URL path to set initial language
         try {
             const path = window.location.pathname.replace('/', '');
             if (['ru', 'es', 'fr', 'de', 'en'].includes(path)) {
@@ -32,7 +31,6 @@ const App: React.FC = () => {
 
     const handleLangChange = (lang: LangCode) => {
         setCurrentLang(lang);
-        // Cosmetic update for SEO consistency, try/catch just in case history API is restricted
         try {
             window.history.pushState({}, '', `/${lang}`);
         } catch (e) {
@@ -40,33 +38,8 @@ const App: React.FC = () => {
         }
     };
 
-    useEffect(() => {
-        const applySafeArea = () => {
-            // Use visualViewport if available for better keyboard/UI handling on mobile
-            const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-            document.documentElement.style.setProperty('--vh', `${height * 0.01}px`);
-            
-            const safeAreaValue = getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-bottom');
-            document.documentElement.style.setProperty('--applied-safe-area-bottom', safeAreaValue || '0px');
-        };
-        
-        applySafeArea();
-        // Debounce resize events to prevent crash loops
-        let timeoutId: any;
-        const handleResize = () => {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(applySafeArea, 100);
-        };
-        
-        window.addEventListener('resize', handleResize);
-        window.addEventListener('orientationchange', applySafeArea);
-        
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            window.removeEventListener('orientationchange', applySafeArea);
-            clearTimeout(timeoutId);
-        };
-    }, []);
+    // Removed the complex JS VisualViewport logic causing crashes on mobile.
+    // We will rely on CSS `h-[100dvh]` which is supported by Tailwind CDN and modern browsers.
 
      useEffect(() => {
         const sessionExists = sessionStorage.getItem('gameInProgress') === 'true';
@@ -77,14 +50,8 @@ const App: React.FC = () => {
                 setGameSettings(JSON.parse(savedSettings));
             } catch (e) {
                 console.error("Failed to parse saved settings:", e);
-                // Fallback to null (defaults will apply in SettingsScreen)
             }
         }
-    }, []);
-
-    const enterFullscreen = useCallback(() => {
-        // Only attempt fullscreen on specific user interactions in GameScreen, not automatically on mount
-        // to avoid browser blocks and confusing UX on mobile.
     }, []);
 
     const handleStartOrReturn = useCallback((settings: GameSettings, isReturn: boolean) => {
@@ -189,7 +156,8 @@ const App: React.FC = () => {
         }
 
         const sessionStillExists = sessionStorage.getItem('gameInProgress') === 'true';
-        // Use h-[100dvh] for dynamic viewport height on mobile browsers
+        
+        // CSS h-[100dvh] handles the dynamic viewport on mobile browsers automatically
         return (
             <div className="w-full h-[100dvh] bg-[#070a17] overflow-hidden flex flex-col">
                 <div className="flex-1 overflow-y-auto w-full overscroll-contain">
